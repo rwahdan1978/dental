@@ -4,13 +4,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTFff-8">
   <meta name="description" content="Dento - Dentist &amp; Medical HTML Template">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Title -->
-  <title>Dento - Dentist &amp; Medical HTML Template</title>
+  <title>Dento - Dentist &amp; Medical Centre</title>
 
   <!-- Favicon -->
   <link rel="icon" href="{% static 'website/img/core-img/favicon.ico' %}">
@@ -38,7 +38,7 @@
           <div class="col-6 col-md-9 col-lg-8">
             <div class="top-header-content">
               <a href="#" data-toggle="tooltip" data-placement="bottom" title="100 N. University Dr., Edmond, OK, 73034 USA"><i class="fa fa-map-marker"></i> <span>100 N. University Dr., Edmond, OK, 73034 USA</span></a>
-              <a href="#" data-toggle="tooltip" data-placement="bottom" title="ramiwahdan1978@gmail.com"><i class="fa fa-envelope"></i> <span>ramiwahdan1978@gmail.com</span></a>
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="ramifamilyphotos2018@gmail.com"><i class="fa fa-envelope"></i> <span>ramifamilyphotos2018@gmail.com</span></a>
             </div>
           </div>
           <!-- Top Header Social Info -->
@@ -81,34 +81,10 @@
               <div class="classynav">
                 <ul id="nav">
                   <li><a href="{% url 'home' %}">Home</a></li>
-                  <li><a href="#">Pages</a>
-                    <ul class="dropdown">
-                      <li><a href="{% url 'home' %}">- Home</a></li>
-                      <li><a href="about.html">- About Us</a></li>
-                      <li><a href="service.html">- Service</a></li>
-                      <li><a href="pricing.html">- Pricing</a></li>
-                      <li><a href="contact.html">- Contact</a></li>
-                      <li><a href="#">- Dropdown</a>
-                        <ul class="dropdown">
-                          <li><a href="#">- Dropdown Item</a></li>
-                          <li><a href="#">- Dropdown Item</a>
-                            <ul class="dropdown">
-                              <li><a href="#">- Even Dropdown</a></li>
-                              <li><a href="#">- Even Dropdown</a></li>
-                              <li><a href="#">- Even Dropdown</a></li>
-                              <li><a href="#">- Even Dropdown</a></li>
-                            </ul>
-                          </li>
-                          <li><a href="#">- Dropdown Item</a></li>
-                          <li><a href="#">- Dropdown Item</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="service.html">Service</a></li>
-                  <li><a href="pricing.html">Pricing</a></li>
-                  <li><a href="./contact.html">Contact</a></li>
+                  <li><a href="{% url 'about' %}">About</a></li>
+                  <li><a href="{% url 'service' %}">Services</a></li>
+                  <li><a href="{% url 'pricing' %}">Pricing</a></li>
+                  <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
               </div>
               <!-- Nav End -->
@@ -451,6 +427,7 @@
         <div class="col-12">
           <div class="more-btn text-center mt-50">
             <a href="#" class="btn dento-btn">Read More <i class="fa fa-angle-double-right"></i></a>
+            <a name='appointment'></a>
           </div>
         </div>
       </div>
@@ -459,7 +436,6 @@
   <!-- Dento Pricing Table Area End -->
 
   <!-- Book An Oppointment Area Start -->
-  <a name='appointment'></a>
   <section class="book-an-oppointment-area section-padding-100 bg-img bg-gradient-overlay jarallax clearfix" style="background-image: url({% static 'website/img/bg-img/12.jpg' %});">
     <div class="container">
       <div class="row">
@@ -467,6 +443,13 @@
         <div class="col-12">
           <div class="section-heading text-center white">
             <h2>Book An Apointment</h2>
+              <br/>
+              {% if your_name %}
+                <center><h3>Thanks {{your_name}}</h3>
+                  <br/>
+                <h3>We received your email and will contact you shortly...</h3></center>
+              {% endif %}
+              <br/>
             <div class="line"></div>
           </div>
         </div>
@@ -476,7 +459,8 @@
         <div class="col-12">
           <!-- Appointment Form -->
           <div class="appointment-form">
-            <form action="#" method="post">
+            <form action="#appointment" method="post">
+              {% csrf_token %}
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group mb-30">
@@ -500,23 +484,34 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group mb-30">
-                    <select name="your-scheldule" class="form-control">
-                      <option value="Choose Your Scheldule">Choose Your Scheldule</option>
-                      <option value="9 AM to 10 AM">9 AM to 10 AM</option>
-                      <option value="11 AM to 12 PM">11 AM to 12 PM</option>
-                      <option value="2 PM to 4 PM">2 PM to 4 PM</option>
-                      <option value="8 PM to 10 PM">8 PM to 10 PM</option>
-                    </select>
+                    <input type="date" name="your-schedule" class="form-control-a">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group mb-30">
                     <select name="your-time" class="form-control">
-                      <option value="Choose Your Time">Choose Your Scheldule</option>
-                      <option value="9 AM to 10 AM">9 AM to 10 AM</option>
-                      <option value="11 AM to 12 PM">11 AM to 12 PM</option>
-                      <option value="2 PM to 4 PM">2 PM to 4 PM</option>
-                      <option value="8 PM to 10 PM">8 PM to 10 PM</option>
+                      <option value="Choose Your Time">Choose the time</option>
+                      <option value="8am">8:00 AM</option>
+                      <option value="8_30am">8:30 AM</option>
+                      <option value="9am">9:00 AM</option>
+                      <option value="9_30am">9:30 AM</option>
+                      <option value="10am">10:00 AM</option>
+                      <option value="10_30am">10:30 AM</option>
+                      <option value="11am">11:00 AM</option>
+                      <option value="11_30am">11:30 AM</option>
+                      <option value="12pm">12:00 PM</option>
+                      <option value="12_30pm">12:30 PM</option>
+                      <option value="1pm">1:00 PM</option>
+                      <option value="1_30pm">1:30 PM</option>
+                      <option value="2pm">2:00 PM</option>
+                      <option value="2_30pm">2:30 PM</option>
+                      <option value="3pm">3:00 PM</option>
+                      <option value="3_30pm">3:30 PM</option>
+                      <option value="4pm">4:00 PM</option>
+                      <option value="4_30pm">4:30 PM</option>
+                      <option value="5pm">5:00 PM</option>
+                      <option value="5_30pm">5:30 PM</option>
+                      <option value="6pm">6:00 PM</option>
                     </select>
                   </div>
                 </div>
@@ -535,7 +530,7 @@
       </div>
     </div>
   </section>
-  <!-- Book An Oppointment Area End -->
+  <!-- Book An Appointment Area End -->
 
   <!-- ***** Dento Dentist Area Start ***** -->
   <section class="dentist-area section-padding-100-0">
@@ -676,19 +671,19 @@
   </section>
   <!-- ***** Testimonials Area End ***** -->
 
-  <!-- ***** Footer Area Start ***** -->
-  <footer class="footer-area bg-img bg-gradient-overlay" style="background-image: url(img/bg-img/3.jpg);">
+    <!-- ***** Footer Area Start ***** -->
+  <footer class="footer-area bg-img bg-gradient-overlay" style="background-image: url({% static 'website/img/bg-img/3.jpg' %});">
     <div class="container">
       <div class="row">
         <!-- Single Footer Widget -->
         <div class="col-12 col-sm-6 col-lg-4">
           <div class="single-footer-widget">
-            <a href="./index.html" class="d-block mb-4"><img src="./img/core-img/logo.png" alt=""></a>
+            <a href="{% url 'home' %}" class="d-block mb-4"><img src="{% static 'website/img/core-img/logo.png' %}" alt=""></a>
             <p>Etiam sutor risus, dapibus act elefend katen, lacinia sitamet denim. Mauris sagittis kansa interdum dignissim.</p>
             <div class="footer-contact">
-              <p><i class="icon_pin"></i> 28 Jackson Street, Chicago, 7788569 USA</p>
+              <p><i class="icon_pin"></i> 100 University Dr. Edmond, OK 73034 USA</p>
               <p><i class="icon_phone"></i> +84. 2252. 2250. 122</p>
-              <p><i class="icon_mail"></i> info.dento@gmail.com</p>
+              <p><i class="icon_mail"></i> ramifamilyphotos2018@gmail.com</p>
             </div>
           </div>
         </div>
@@ -719,21 +714,15 @@
             <!-- Quick Links Nav -->
             <nav>
               <ul class="quick-links">
-                <li><a href="#">About</a></li>
-                <li><a href="#">FAQs</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Policy</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Advisors</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Dentist</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Legals</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'service' %}">Services</a></li>
+                <li><a href="{% url 'pricing' %}">Pricing</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
               </ul>
             </nav>
           </div>
         </div>
-
+        
         <!-- Single Footer Widget -->
         <div class="col-12 col-sm-6 col-lg">
           <div class="single-footer-widget">
@@ -762,7 +751,6 @@
 
   </footer>
   <!-- ***** Footer Area End ***** -->
-
 
   <!-- ******* All JS ******* -->
   <!-- jQuery js -->
