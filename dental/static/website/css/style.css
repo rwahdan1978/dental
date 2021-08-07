@@ -134,9 +134,9 @@ ul {
     top: 0;
     left: 0;
     z-index: -1;
-    background: #2c455d;
-    background: -webkit-linear-gradient(to right, #2c455d, #00012c);
-    background: linear-gradient(to right, #2c455d, #00012c);
+    background: #e8d8d8;
+    background: -webkit-linear-gradient(to right, #e8d8d8, #e8b3b3);
+    background: linear-gradient(to right, #e8d8d8, #e8b3b3);
     opacity: 0.85; }
 
 .bg-img {
@@ -1553,5 +1553,18 @@ ul {
   .contact-form textarea.form-control {
     height: 110px;
     padding: 15px; }
+
+.carousel-caption{
+    transform: translateY(-50%);
+    bottom: initial;
+    top: 50%;
+}
+
+.w100 {font-weight: 100 !important;}
+.w300 {font-weight: 300 !important;}
+.w400 {font-weight: 400 !important;}
+.w500 {font-weight: 500 !important;}
+.w700 {font-weight: 700 !important;}
+.w900 {font-weight: 900 !important;}
 
 /*# sourceMappingURL=style.css.map */
