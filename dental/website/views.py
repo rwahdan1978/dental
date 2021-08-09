@@ -39,7 +39,7 @@ def contact(request):
 			'From: ' + message_name + "\n" + message_email + "\n\n" + message, 						
 			message_email, 					
 			['ramifamilyphotos2018@gmail.com', message_email],
-			fail_silently=True,
+			fail_silently=False,
 			)
 
 		return render(request, 'contact.html', {'message_name': message_name})
@@ -57,3 +57,19 @@ def pricing(request):
 
 def blog_details(request):
 	return render(request, 'blog-details.html', {})
+
+def base(request):
+	if request.method == "POST":
+		nl_email = request.POST['nl-email']
+
+		send_mail(
+
+			'News Letter Subscription', 					
+			'From: ' + nl_email, 						
+			nl_email, 					
+			['ramifamilyphotos2018@gmail.com', nl_email],
+			fail_silently=False,
+			)
+
+		return render(request, 'base.html', {'nl_email': nl_email})
+

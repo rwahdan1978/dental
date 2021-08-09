@@ -11,7 +11,7 @@ Last Update: Dec 05, 2018
 
 + body
   - 1.0 Reboot CSS
-  - 2.0 Spacing CSS
+  - 2.0 Spacing 
   - 3.0 Preloader CSS
   - 4.0 Heading CSS
   - 5.0 Back To Top CSS
@@ -1465,8 +1465,8 @@ ul {
       background-color: #ffffff;
       border-radius: 2px;
       border: none;
-      font-size: 12px;
-      padding: 0 15px; }
+      font-size: 8px;
+      padding: 0 1px; }
     .single-footer-widget .footer-newsletter-form button {
       width: auto;
       padding: 0 15px;

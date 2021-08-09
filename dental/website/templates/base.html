@@ -101,6 +101,19 @@
   </header>
   <!-- ***** Header Area End ***** -->
 
+{% if nl_email %}
+  
+  <center>
+    <h2>Thanks {{nl_email}}</h2>
+    <br/>
+    <h4>We received your email and you will start 
+    getting our new letter from now on...</h4>
+  </center>
+  <br/>
+
+{% endif %}
+
+
 {% block content %}
 {% endblock %}
 
@@ -272,7 +285,8 @@
             <p>We will send out weekly newest article and some great offers</p>
             <!-- Newsletter Form -->
             <div class="footer-newsletter-form">
-              <form action="#" method="post">
+              <form action="{% url 'base' %}" method="post">
+                {% csrf_token %}
                 <input type="email" name="nl-email" value="" placeholder="Email Address">
                 <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
               </form>
